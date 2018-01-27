@@ -95,7 +95,7 @@ Because the automatic generation is extremely naive, the dataset is noisy. Howev
 
 ### 2-3. Generate English datasets
 
-1. Download speech dataset at https://keithito.com/LJ-Speech-Dataset/ (into datasets/LJSpeech_1_0 folder - wavs folder, prepare.py and metadata.csv should be placed inside the folder)
+1. Download speech dataset at https://keithito.com/LJ-Speech-Dataset/ into datasets/LJSpeech_1_0 folder (folder "wavs" and metadata.csv should be placed inside the folder)
 
 2. Convert metadata CSV file to json file. (arguments are available for changing preferences)
 		
