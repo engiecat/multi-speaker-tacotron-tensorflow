@@ -77,6 +77,8 @@ def text_recognition(path, args, ds):
 
 	max_duration = args.max_duration - \
 			args.pre_silence_length - args.post_silence_length
+	min_duration= = args.min_duration - \
+			args.pre_silence_length - args.post_silence_length
 	audio_duration = get_duration(content, content_sr)
 
 	if audio_duration >= max_duration:
