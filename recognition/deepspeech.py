@@ -83,7 +83,10 @@ def text_recognition(path, args, ds):
 		print(" [!] Skip {} because of duration: {} > {}". \
 				format(path, audio_duration, max_duration))
 		return {}
-		
+	if audio_duration <= min_duration:
+		print(" [!] Skip {} because of duration: {} < {}". \
+				format(path, audio_duration, min_duration))
+		return {}
 
 	content = resample_audio(content, content_sr, args.sample_rate)
 	content = convert_to_int16(content)
@@ -140,6 +143,7 @@ if __name__ == "__main__":
 	parser.add_argument('--pre_silence_length', default=1, type=int)
 	parser.add_argument('--post_silence_length', default=1, type=int)
 	parser.add_argument('--max_duration', default=60, type=int)
+	parser.add_argument('--min_duration', default=2, type=int)
 	parser.add_argument('--sample_rate', default=16000, type=int)
 	
 	args=parser.parse_args()
