@@ -9,14 +9,13 @@ basic_params = {
     # Comma-separated list of cleaners to run on text prior to training and eval. For non-English
     # text, you may want to use "basic_cleaners" or "transliteration_cleaners" See TRAINING_DATA.md.
     'cleaners': 'english_cleaners', #originally korean_cleaners
-	'use_cmudict': False,
 }
 
 basic_params.update({
     # Audio
     'num_mels': 80,
     'num_freq': 1025,
-    'sample_rate': 22050, # trained as 20000 but need to be 24000 
+    'sample_rate': 20000, 
     'frame_length_ms': 50,
     'frame_shift_ms': 12.5,
     'preemphasis': 0.97,
@@ -31,7 +30,7 @@ if True:
 
 basic_params.update({
     # Model
-    'model_type': 'deepvoice', # [single, simple, deepvoice]
+    'model_type': 'single', # [single, simple, deepvoice]
     'speaker_embedding_size': f(16),
 
     'embedding_size': f(256),
@@ -69,7 +68,7 @@ basic_params.update({
     'reduction_factor': 4,
 })
 
-if False: # Deep Voice 2 AudioBook Dataset
+if False: # Deep Voice 2
     basic_params.update({
         'dropout_prob': 0.8,
 
@@ -79,9 +78,9 @@ if False: # Deep Voice 2 AudioBook Dataset
         'post_bank_channel_size': f(512),
         'post_rnn_size': f(256),
 
-        'reduction_factor': 4, # changed from 4
+        'reduction_factor': 5, # changed from 4
     })
-elif True: # Deep Voice 2 VCTK dataset
+elif False: # Deep Voice 2 init
     basic_params.update({
         'dropout_prob': 0.8,
 
@@ -91,9 +90,9 @@ elif True: # Deep Voice 2 VCTK dataset
         #'post_bank_channel_size': f(512),
         'post_rnn_size': f(256),
 
-        'reduction_factor': 5,
+        'reduction_factor': 4,
     })
-elif False: # Single Speaker
+elif True: # Single Speaker
     basic_params.update({
         'dropout_prob': 0.5,
 
@@ -114,7 +113,7 @@ elif False: # Single Speaker with generalization
         'post_bank_channel_size': f(128),
         'post_rnn_size': f(128),
 
-        'reduction_factor': 5,
+        'reduction_factor': 4,
     })
 
 
@@ -126,7 +125,7 @@ basic_params.update({
     'use_fixed_test_inputs': False,
 
     'initial_learning_rate': 0.001,
-    'decay_learning_rate_mode': 1, # True in deepvoice2 paper
+    'decay_learning_rate_mode': 0,
     'initial_data_greedy': True,
     'initial_phase_step': 8000,
     'main_data_greedy_factor': 0,
@@ -134,10 +133,10 @@ basic_params.update({
     'prioritize_loss': False,
 
     'recognition_loss_coeff': 0.2,
-    'ignore_recognition_level': 1, # 0: use all, 1: ignore only unmatched_alignment, 2: fully ignore recognition
+    'ignore_recognition_level': 0, # 0: use all, 1: ignore only unmatched_alignment, 2: fully ignore recognition
 
     # Eval
-    'min_tokens': 30,#originally 50, 30 is good for korean,
+    'min_tokens': 50,#originally 50, 30 is good for korean,
     'min_iters': 30,
     'max_iters': 200,
     'skip_inadequate': False,
