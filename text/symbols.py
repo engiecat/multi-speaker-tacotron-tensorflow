@@ -17,6 +17,8 @@ from text import cmudict
 # Prepend "@" to ARPAbet symbols to ensure uniqueness (some are the same as uppercase letters):
 _arpabet = ['@' + s for s in cmudict.valid_symbols]
 
-en_symbols = [PAD,EOS]+list('ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz!\'(),-.:;? ')+_arpabet  #<-For deployment(Because korean ALL_SYMBOLS follow this convention)
+en_symbols_arpabet = [PAD,EOS]+list('ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz!\'(),-.:;? ')+_arpabet  #<-For deployment(Because korean ALL_SYMBOLS follow this convention)
+
+en_symbols=en_symbols_arpabet = [PAD,EOS]+list('ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz!\'(),-.:;? ')
 
 symbols = list(ALL_SYMBOLS) # for korean
