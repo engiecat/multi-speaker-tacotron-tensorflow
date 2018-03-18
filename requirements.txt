@@ -107,3 +107,5 @@ urllib3==1.22
 wcwidth==0.1.7
 Werkzeug==0.12.2
 youtube-dl==2017.10.15.1
+unidecode==1.0.22
+inflect==0.2.5

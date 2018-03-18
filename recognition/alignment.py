@@ -11,7 +11,7 @@ from text import remove_puncuations, text_to_sequence
 from utils import load_json, write_json, parallel_run, remove_postfix, backup_file
 
 def plain_text(text):
-    return "".join(remove_puncuations(text.strip()).split())
+    return "".join(remove_puncuations(text.strip().lower()).split())
 
 def add_punctuation(text):
     if text.endswith('다'):

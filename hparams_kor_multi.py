@@ -8,15 +8,14 @@ def f(num):
 basic_params = {
     # Comma-separated list of cleaners to run on text prior to training and eval. For non-English
     # text, you may want to use "basic_cleaners" or "transliteration_cleaners" See TRAINING_DATA.md.
-    'cleaners': 'english_cleaners', #originally korean_cleaners
-	'use_cmudict': False,
+    'cleaners': 'korean_cleaners', #originally korean_cleaners
 }
 
 basic_params.update({
     # Audio
     'num_mels': 80,
     'num_freq': 1025,
-    'sample_rate': 22050, # trained as 20000 but need to be 24000 
+    'sample_rate': 24000, # trained as 20000 but need to be 24000 
     'frame_length_ms': 50,
     'frame_shift_ms': 12.5,
     'preemphasis': 0.97,
@@ -26,7 +25,7 @@ basic_params.update({
 
 if True:
     basic_params.update({
-        'sample_rate': 22050, #originally 24000 (krbook), 22050(lj-data), 20000(others) 
+        'sample_rate': 24000, #originally 24000 (krbook), 22050(lj-data), 20000(others) 
     })
 
 basic_params.update({
@@ -79,7 +78,7 @@ if False: # Deep Voice 2 AudioBook Dataset
         'post_bank_channel_size': f(512),
         'post_rnn_size': f(256),
 
-        'reduction_factor': 4, # changed from 4
+        'reduction_factor': 5, # changed from 4
     })
 elif True: # Deep Voice 2 VCTK dataset
     basic_params.update({
@@ -114,13 +113,13 @@ elif False: # Single Speaker with generalization
         'post_bank_channel_size': f(128),
         'post_rnn_size': f(128),
 
-        'reduction_factor': 5,
+        'reduction_factor': 4,
     })
 
 
 basic_params.update({
     # Training
-    'batch_size': 32,
+    'batch_size': 16,
     'adam_beta1': 0.9,
     'adam_beta2': 0.999,
     'use_fixed_test_inputs': False,
@@ -134,7 +133,7 @@ basic_params.update({
     'prioritize_loss': False,
 
     'recognition_loss_coeff': 0.2,
-    'ignore_recognition_level': 1, # 0: use all, 1: ignore only unmatched_alignment, 2: fully ignore recognition
+    'ignore_recognition_level': 0, # 0: use all, 1: ignore only unmatched_alignment, 2: fully ignore recognition
 
     # Eval
     'min_tokens': 30,#originally 50, 30 is good for korean,
